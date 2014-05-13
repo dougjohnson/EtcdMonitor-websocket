@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 require 'em-websocket'
-require './etcdwatcher'
+require_relative 'etcdwatcher'
 
 etcd_server = ARGV.shift || "10.1.42.1"
 
