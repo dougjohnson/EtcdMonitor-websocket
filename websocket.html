@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<head>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      var container = $('.container');
+      
+      var addToPage = function(json) {
+        container.append('<div><pre>'+json+'</pre></div>')
+      };
+      
+      var socket = new WebSocket('ws://172.17.8.101:8080/');
+ 
+      socket.onopen = function() {
+        console.log("Socket opened");
+      };
+ 
+      socket.onmessage = function(message) {
+//        var info = JSON.parse(message.data);
+        console.log(message.data);
+//        addToPage(info.action);
+      };
+ 
+      socket.onclose = function() {
+        console.log("Socket closed");
+      };
+    })
+  </script>
+</head>
+ 
+<body>
+  <div class="container"></div>
+</body>
